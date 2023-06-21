@@ -36,7 +36,7 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Content"
+            android:text="Category"
             app:layout_constraintStart_toStartOf="@+id/nameEditText"
             app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
 
@@ -51,16 +51,35 @@
             app:layout_constraintStart_toStartOf="@+id/textView3"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Content"
+            app:layout_constraintStart_toStartOf="@+id/contentEditText"
+            app:layout_constraintTop_toBottomOf="@+id/contentEditText" />
+
+        <EditText
+            android:id="@+id/editTextTextMultiLine"
+            android:layout_width="339dp"
+            android:layout_height="190dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
         <Button
             android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
             android:text="@string/save"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.557"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contentEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
