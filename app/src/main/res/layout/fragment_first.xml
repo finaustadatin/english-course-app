@@ -7,7 +7,7 @@
     tools:context=".FirstFragment">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/notFoundTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -15,12 +15,12 @@
         android:layout_marginEnd="32dp"
         android:text="English Course Not Found"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/notFoundImageView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/notFoundImageView" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/notFoundImageView"
         android:layout_width="413dp"
         android:layout_height="271dp"
         android:contentDescription="Error Not Found"
@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/dataRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
