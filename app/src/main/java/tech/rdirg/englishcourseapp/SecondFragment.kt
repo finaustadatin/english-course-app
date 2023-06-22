@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -49,19 +50,44 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val navController = findNavController()
+
         course = args?.course
         if (course != null){
             binding.deleteButton.visibility = View.VISIBLE
             binding.saveButton.text = "Update"
+            binding.nameEditText.setText(course?.title)
+            binding.categoryEditText.setText(course?.category)
+            binding.contentTextMultiLine.setText(course?.content)
+        }else{
+            val label = "Edit Course"
+            navController.currentDestination?.label = label
         }
 
         val title = binding.nameEditText.text
         val category = binding.categoryEditText.text
         val content = binding.contentTextMultiLine.text
         binding.saveButton.setOnClickListener {
-            val course = Course(title = title.toString(), category = category.toString(), content = content.toString())
-            courseViewModel.insert(course)
-            findNavController().popBackStack()
+            if(title.isEmpty() || category.isEmpty() || content.isEmpty()){
+                if (title.isEmpty()){
+                    Toast.makeText(context, "Title is required", Toast.LENGTH_SHORT).show()
+                }
+                if (category.isEmpty()){
+                    Toast.makeText(context, "Category is required", Toast.LENGTH_SHORT).show()
+                }
+                if (content.isEmpty()){
+                    Toast.makeText(context, "Content is required", Toast.LENGTH_SHORT).show()
+                }
+            }else{
+                if (course == null){
+                    val course = Course(title = title.toString(), category = category.toString(), content = content.toString())
+                    courseViewModel.insert(course)
+                }else{
+                    val course = Course(id = course?.id!!, title = title.toString(), category = category.toString(), content = content.toString())
+                    courseViewModel.update(course)
+                }
+                findNavController().popBackStack()
+            }
         }
 
         binding.deleteButton.setOnClickListener {
