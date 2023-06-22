@@ -11,5 +11,6 @@ data class Course(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val title: String,
+    val category: String,
     val content: String
     ) : Parcelable
