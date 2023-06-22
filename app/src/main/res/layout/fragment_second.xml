@@ -41,7 +41,7 @@
             app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
 
         <EditText
-            android:id="@+id/contentEditText"
+            android:id="@+id/categoryEditText"
             android:layout_width="348dp"
             android:layout_height="50dp"
             android:ems="10"
@@ -56,11 +56,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Content"
-            app:layout_constraintStart_toStartOf="@+id/contentEditText"
-            app:layout_constraintTop_toBottomOf="@+id/contentEditText" />
+            app:layout_constraintStart_toStartOf="@+id/categoryEditText"
+            app:layout_constraintTop_toBottomOf="@+id/categoryEditText" />
 
         <EditText
-            android:id="@+id/editTextTextMultiLine"
+            android:id="@+id/contentTextMultiLine"
             android:layout_width="339dp"
             android:layout_height="190dp"
             android:ems="10"
@@ -79,7 +79,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+            app:layout_constraintTop_toBottomOf="@+id/contentTextMultiLine" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
