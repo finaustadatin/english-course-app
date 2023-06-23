@@ -59,8 +59,10 @@ class SecondFragment : Fragment() {
             binding.nameEditText.setText(course?.title)
             binding.categoryEditText.setText(course?.category)
             binding.contentTextMultiLine.setText(course?.content)
-        }else{
             val label = "Edit Course"
+            navController.currentDestination?.label = label
+        }else{
+            val label = "Add Course"
             navController.currentDestination?.label = label
         }
 
