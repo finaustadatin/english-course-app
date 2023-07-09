@@ -71,14 +71,25 @@
             app:layout_constraintStart_toStartOf="@+id/textView4"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/contentTextMultiLine"
+            app:layout_constraintStart_toStartOf="@+id/contentTextMultiLine"
+            app:layout_constraintTop_toBottomOf="@id/contentTextMultiLine" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/contentTextMultiLine"
-            app:layout_constraintTop_toBottomOf="@+id/contentTextMultiLine">
+            app:layout_constraintTop_toBottomOf="@+id/map">
             <Button
                 android:id="@+id/deleteButton"
                 android:layout_width="wrap_content"

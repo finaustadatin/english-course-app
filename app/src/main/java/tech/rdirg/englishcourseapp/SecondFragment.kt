@@ -10,6 +10,12 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import tech.rdirg.englishcourseapp.application.CourseApp
 import tech.rdirg.englishcourseapp.databinding.FragmentSecondBinding
 import tech.rdirg.englishcourseapp.model.Course
@@ -17,7 +23,7 @@ import tech.rdirg.englishcourseapp.model.Course
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SecondFragment : Fragment() {
+class SecondFragment : Fragment(), OnMapReadyCallback {
 
     private var _binding: FragmentSecondBinding? = null
 
@@ -31,6 +37,7 @@ class SecondFragment : Fragment() {
 
     private val args: SecondFragmentArgs? by navArgs()
     private var course: Course? = null
+    private lateinit var mMap: GoogleMap
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -65,6 +72,10 @@ class SecondFragment : Fragment() {
             val label = "Add Course"
             navController.currentDestination?.label = label
         }
+
+        // binding google map
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
 
         val title = binding.nameEditText.text
         val category = binding.categoryEditText.text
@@ -101,5 +112,13 @@ class SecondFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+
+        val sydney = LatLng(-34.0, 151.0)
+        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 12f))
     }
 }
