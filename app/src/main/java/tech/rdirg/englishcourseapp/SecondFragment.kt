@@ -14,7 +14,10 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import tech.rdirg.englishcourseapp.application.CourseApp
 import tech.rdirg.englishcourseapp.databinding.FragmentSecondBinding
@@ -23,7 +26,7 @@ import tech.rdirg.englishcourseapp.model.Course
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SecondFragment : Fragment(), OnMapReadyCallback {
+class SecondFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerDragListener{
 
     private var _binding: FragmentSecondBinding? = null
 
@@ -38,6 +41,7 @@ class SecondFragment : Fragment(), OnMapReadyCallback {
     private val args: SecondFragmentArgs? by navArgs()
     private var course: Course? = null
     private lateinit var mMap: GoogleMap
+    private var currentLatLng: LatLng? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -116,9 +120,31 @@ class SecondFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        // implement drag marker
+
+        val uiSettings = mMap.uiSettings
+        uiSettings.isZoomControlsEnabled = true
 
         val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        val markerOptions = MarkerOptions()
+            .position(sydney)
+            .title("Marker in Sydney")
+            .draggable(true)
+            .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_course_map_32))
+        mMap.addMarker(markerOptions)
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 12f))
+        mMap.setOnMarkerDragListener(this)
+    }
+
+    override fun onMarkerDrag(p0: Marker) {
+    }
+
+    override fun onMarkerDragEnd(marker: Marker) {
+        val newPosition = marker.position
+        currentLatLng = LatLng(newPosition.latitude, newPosition.longitude)
+        Toast.makeText(context, currentLatLng.toString(), Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onMarkerDragStart(p0: Marker) {
     }
 }
