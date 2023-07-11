@@ -57,20 +57,20 @@ Sebelum memulai pastikan sudah mengaktifkan sdk google maps dan menambahkan API 
 
 Tampilan ini hanya sebatas menampilkan maps saja belum bisa menampilkan lokasi pengguna saat ini.
 
-![get_current_location_1](https://github.com/finaustadatin/english-course-app/blob/master/img/get-current-location-1)
+![get_current_location_1](https://github.com/finaustadatin/english-course-app/blob/master/img/get-current-location-1.png)
 
 Pada tampilan ini sudah bisa menampilkan lokasi pengguna saat ini. namun belum bisa menyimpan lokasi tersebut ke dalam database.
 
-![get_current_location_2](https://github.com/finaustadatin/english-course-app/blob/master/img/get-current-location-2)
+![get_current_location_2](https://github.com/finaustadatin/english-course-app/blob/master/img/get-current-location-2.png)
 
 Pada tampilan ini sudah bisa menampilkan lokasi pengguna saat ini. dan sudah bisa menyimpan lokasi tersebut ke dalam database dan mengubahnya.
 
 ## Camera
 
-![camera_1](https://github.com/finaustadatin/english-course-app/blob/master/img/camera-1)
+![camera_1](https://github.com/finaustadatin/english-course-app/blob/master/img/camera-1.png)
 
 Ini merupakan tampilan awal dari fitur camera yang belum melakukan pengambilan gambar.
 
-![camera_2](https://github.com/finaustadatin/english-course-app/blob/master/img/camera-2)
+![camera_2](https://github.com/finaustadatin/english-course-app/blob/master/img/camera-2.png)
 
 Ini merupakan tampilan setelah melakukan pengambilan gambar.
