@@ -103,10 +103,10 @@ class SecondFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerDragLis
                 }
             }else{
                 if (course == null){
-                    val course = Course(title = title.toString(), category = category.toString(), content = content.toString())
+                    val course = Course(title = title.toString(), category = category.toString(), content = content.toString(), longitude = currentLatLng?.longitude!!, latitude = currentLatLng?.latitude!!)
                     courseViewModel.insert(course)
                 }else{
-                    val course = Course(id = course?.id!!, title = title.toString(), category = category.toString(), content = content.toString())
+                    val course = Course(id = course?.id!!, title = title.toString(), category = category.toString(), content = content.toString(), longitude = currentLatLng?.longitude!!, latitude = currentLatLng?.latitude!!)
                     courseViewModel.update(course)
                 }
                 findNavController().popBackStack()
@@ -164,6 +164,12 @@ class SecondFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerDragLis
                 var latLng = LatLng(location.latitude, location.longitude)
                 currentLatLng = latLng
                 var title = "Marker"
+
+                if(course != null){
+                    latLng = LatLng(course?.latitude!!, course?.longitude!!)
+                    currentLatLng = latLng
+                    title = course?.title.toString()
+                }
 
                 val markerOptions = MarkerOptions()
                     .position(latLng)

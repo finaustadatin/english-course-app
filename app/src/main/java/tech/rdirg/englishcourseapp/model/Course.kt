@@ -12,5 +12,7 @@ data class Course(
     val id: Int = 0,
     val title: String,
     val category: String,
-    val content: String
+    val content: String,
+    val longitude: Double,
+    val latitude: Double,
     ) : Parcelable
