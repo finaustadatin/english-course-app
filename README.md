@@ -39,3 +39,38 @@ Tampilan ini tidak hanya menampilkan data english course saja tetapi jika diteka
 
 Tampilan ini sebenarnya modifikasi dari page 2 pada part pertama yang hanya berfungsi untuk insert data atau menambahkan
 pada tampilan ini sudah bisa untuk mengedit data maupun menghapus data.
+
+
+## ----------------------------------------------------------------------------------------------------------------------------------------------
+
+## Part 3
+
+## Setup android SDK
+
+![Setup google_maps](https://github.com/finaustadatin/english-course-app/blob/master/img/enable-sdk.png)
+
+Sebelum memulai pastikan sudah mengaktifkan sdk google maps dan menambahkan API key pada file `AndroidManifest.xml` dan mengkonfigurasikan pada file build.gradle di dalam folder app.
+
+## Google Maps
+
+![maps_android](https://github.com/finaustadatin/english-course-app/blob/master/img/maps-android.png)
+
+Tampilan ini hanya sebatas menampilkan maps saja belum bisa menampilkan lokasi pengguna saat ini.
+
+![get_current_location_1](https://github.com/finaustadatin/english-course-app/blob/master/img/get-current-location-1)
+
+Pada tampilan ini sudah bisa menampilkan lokasi pengguna saat ini. namun belum bisa menyimpan lokasi tersebut ke dalam database.
+
+![get_current_location_2](https://github.com/finaustadatin/english-course-app/blob/master/img/get-current-location-2)
+
+Pada tampilan ini sudah bisa menampilkan lokasi pengguna saat ini. dan sudah bisa menyimpan lokasi tersebut ke dalam database dan mengubahnya.
+
+## Camera
+
+![camera_1](https://github.com/finaustadatin/english-course-app/blob/master/img/camera-1)
+
+Ini merupakan tampilan awal dari fitur camera yang belum melakukan pengambilan gambar.
+
+![camera_2](https://github.com/finaustadatin/english-course-app/blob/master/img/camera-2)
+
+Ini merupakan tampilan setelah melakukan pengambilan gambar.
