@@ -1,15 +1,19 @@
 package tech.rdirg.englishcourseapp
 
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -42,6 +46,7 @@ class SecondFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerDragLis
     private var course: Course? = null
     private lateinit var mMap: GoogleMap
     private var currentLatLng: LatLng? = null
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -80,6 +85,7 @@ class SecondFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerDragLis
         // binding google map
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        checkPermission()
 
         val title = binding.nameEditText.text
         val category = binding.categoryEditText.text
@@ -124,15 +130,6 @@ class SecondFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerDragLis
 
         val uiSettings = mMap.uiSettings
         uiSettings.isZoomControlsEnabled = true
-
-        val sydney = LatLng(-34.0, 151.0)
-        val markerOptions = MarkerOptions()
-            .position(sydney)
-            .title("Marker in Sydney")
-            .draggable(true)
-            .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_course_map_32))
-        mMap.addMarker(markerOptions)
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 12f))
         mMap.setOnMarkerDragListener(this)
     }
 
@@ -146,5 +143,36 @@ class SecondFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerDragLis
     }
 
     override fun onMarkerDragStart(p0: Marker) {
+    }
+
+    private fun checkPermission(){
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(applicationContext)
+        if (ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
+            getCurrentLocation()
+        }else {
+            Toast.makeText(applicationContext, "Access Location denied!", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun getCurrentLocation(){
+        // check permission
+        if(ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            return
+        }
+        fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+            if (location != null){
+                var latLng = LatLng(location.latitude, location.longitude)
+                currentLatLng = latLng
+                var title = "Marker"
+
+                val markerOptions = MarkerOptions()
+                    .position(latLng)
+                    .title(title)
+                    .draggable(true)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_course_map_32))
+                mMap.addMarker(markerOptions)
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
+            }
+        }
     }
 }
