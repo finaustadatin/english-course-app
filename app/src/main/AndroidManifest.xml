@@ -22,9 +22,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EnglishCourseApp"
         tools:targetApi="31">
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CameraActivity"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBsdq0QSUE4oGLmPQFzyKDfKFMGj0muyjI" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

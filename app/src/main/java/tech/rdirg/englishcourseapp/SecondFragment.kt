@@ -123,10 +123,6 @@ class SecondFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerDragLis
             courseViewModel.delete(course!!)
             findNavController().popBackStack()
         }
-
-        binding.cameraButton.setOnClickListener {
-            checkCameraPermission()
-        }
     }
 
     override fun onDestroyView() {
@@ -192,20 +188,20 @@ class SecondFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerDragLis
         }
     }
 
-    private fun checkCameraPermission() {
-        if(ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            activity?.let { ActivityCompat.requestPermissions(it, arrayOf(android.Manifest.permission.CAMERA), cameraRequestCode) }
-        }else{
-            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            startActivityForResult(cameraIntent, cameraRequestCode)
-        }
-    }
+//    private fun checkCameraPermission() {
+//        if(ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+//            activity?.let { ActivityCompat.requestPermissions(it, arrayOf(android.Manifest.permission.CAMERA), cameraRequestCode) }
+//        }else{
+//            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+//            startActivityForResult(cameraIntent, cameraRequestCode)
+//        }
+//    }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if ((requestCode == cameraRequestCode) && (resultCode == Activity.RESULT_OK)){
-            val imageBitmap = data?.extras?.get("data") as Bitmap
-            binding.photoImageView.setImageBitmap(imageBitmap)
-        }
-    }
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if ((requestCode == cameraRequestCode) && (resultCode == Activity.RESULT_OK)){
+//            val imageBitmap = data?.extras?.get("data") as Bitmap
+//            binding.photoImageView.setImageBitmap(imageBitmap)
+//        }
+//    }
 }

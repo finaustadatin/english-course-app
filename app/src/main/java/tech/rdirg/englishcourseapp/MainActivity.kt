@@ -1,8 +1,8 @@
 package tech.rdirg.englishcourseapp
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
@@ -14,6 +14,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import tech.rdirg.englishcourseapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private val LOCATION_PERMISSION_REQUEST_CODE = 1
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -36,11 +38,27 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-//        binding.fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAnchorView(R.id.fab)
-//                .setAction("Action", null).show()
-//        }
+        bottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.navigation_home -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.navigation_camera -> {
+                    val intent = Intent(this, CameraActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.navigation_profile -> {
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -88,6 +106,27 @@ class MainActivity : AppCompatActivity() {
     private fun checkLocationPermission() {
         if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
+        }
+    }
+
+    fun bottomNavbar() {
+        bottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.navigation_home -> {
+                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.navigation_camera -> {
+                    Toast.makeText(this, "Camera", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.navigation_profile -> {
+                    Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
         }
     }
 }

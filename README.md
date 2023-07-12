@@ -74,3 +74,38 @@ Ini merupakan tampilan awal dari fitur camera yang belum melakukan pengambilan g
 ![camera_2](https://github.com/finaustadatin/english-course-app/blob/master/img/camera-2.png)
 
 Ini merupakan tampilan setelah melakukan pengambilan gambar.
+
+## ----------------------------------------------------------------------------------------------------------------------------------------------
+
+## Halaman Aplikasi
+
+## Home Page
+
+![home_page](https://github.com/finaustadatin/english-course-app/blob/master/img/page/home-page.png)
+
+Menampilkan halaman awal dari aplikasi yang berisi tentang informasi awal dari aplikasi dan ada beberapa tombol yang dapat menavigasikan ke halaman yang dipilih.
+
+## Camera Page
+
+![camera_page](https://github.com/finaustadatin/english-course-app/blob/master/img/page/camera-page.png)
+
+Menampilkan halaman camera yang berfungsi untuk mengambil gambar.
+
+## Profile Page
+
+![profile_page](https://github.com/finaustadatin/english-course-app/blob/master/img/page/profile-page.png)
+
+Menampilkan halaman profile yang berisi tentang informasi pengguna.
+
+## Add English Course Page
+
+![add_course_page](https://github.com/finaustadatin/english-course-app/blob/master/img/page/add-course-page.png)
+
+Menampilkan halaman add english course yang berfungsi untuk menambahkan data english course.
+
+## Edit English Course Page
+
+![edit_course_page](https://github.com/finaustadatin/english-course-app/blob/master/img/page/edit-course-page.png)
+
+Menampilkan halaman edit english course yang berfungsi untuk mengubah data english course.
+

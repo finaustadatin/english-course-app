@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".SecondFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView2"
@@ -17,116 +17,83 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Title Course"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/photoImageView" />
+            android:text="Title Course" />
 
         <EditText
             android:id="@+id/nameEditText"
-            android:layout_width="348dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:ems="10"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            android:inputType="text" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Category"
-            app:layout_constraintStart_toStartOf="@+id/nameEditText"
-            app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp" />
 
         <EditText
             android:id="@+id/categoryEditText"
-            android:layout_width="348dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:ems="10"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView3"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            android:inputType="text" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Content"
-            app:layout_constraintStart_toStartOf="@+id/categoryEditText"
-            app:layout_constraintTop_toBottomOf="@+id/categoryEditText" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp" />
 
         <EditText
             android:id="@+id/contentTextMultiLine"
-            android:layout_width="339dp"
-            android:layout_height="190dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:ems="10"
             android:gravity="start|top"
-            android:inputType="textMultiLine"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            android:inputType="textMultiLine" />
 
         <fragment
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/contentTextMultiLine"
-            app:layout_constraintStart_toStartOf="@+id/contentTextMultiLine"
-            app:layout_constraintTop_toBottomOf="@id/contentTextMultiLine" />
+            android:layout_marginTop="16dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/contentTextMultiLine"
-            app:layout_constraintTop_toBottomOf="@+id/map">
+            android:layout_marginBottom="32dp">
+
             <Button
                 android:id="@+id/deleteButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Delete"
                 android:layout_weight="1"
+                android:text="Delete"
                 android:layout_marginEnd="4dp"
                 android:visibility="gone"
                 android:backgroundTint="#FF0000" />
+
             <Button
                 android:id="@+id/saveButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/save"
-                android:layout_marginStart="4dp"
-                android:layout_weight="1"/>
+                android:layout_marginStart="4dp" />
         </LinearLayout>
 
-        <ImageView
-            android:background="#61666A"
-            android:id="@+id/photoImageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
-
-        <Button
-            android:id="@+id/cameraButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Camera"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/photoImageView"
-            app:layout_constraintTop_toTopOf="@+id/photoImageView" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </androidx.core.widget.NestedScrollView>
